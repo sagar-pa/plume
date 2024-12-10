@@ -1,0 +1,14 @@
+{
+    "puffer_ttp_20190202": {
+        "cc": ["bbr"] 
+    },
+    "puffer_ttp_20190302": {
+        "cc": ["bbr"] 
+    },
+    "puffer_ttp_20190402": {
+        "cc": ["bbr"] 
+    },
+    "puffer_ttp_20190502": {
+        "cc": ["bbr"] 
+    }
+}

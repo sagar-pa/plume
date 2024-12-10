@@ -1,0 +1,53 @@
+{
+    "mpc": {
+        "cc": ["bbr"] 
+    },
+    "bola_basic_v1": {
+        "cc": ["bbr"] 
+    },
+    "bola_basic_v2": {
+        "cc": ["bbr"] 
+    },
+    "linear_bba": {
+        "cc": ["bbr"] 
+    },
+    "puffer_ttp": {
+        "cc": ["bbr"] 
+    },
+    "puffer_ttp_cl": {
+        "cc": ["bbr"] 
+    },
+    "puffer_ttp_20190202": {
+        "cc": ["bbr"] 
+    },
+    "puffer_ttp_20190302": {
+        "cc": ["bbr"] 
+    },
+    "puffer_ttp_20190402": {
+        "cc": ["bbr"] 
+    },
+    "puffer_ttp_20190502": {
+        "cc": ["bbr"] 
+    },
+    "fugu_variant_cl": {
+        "cc": ["bbr"] 
+    },
+    "fugu_variant_cl2": {
+        "cc": ["bbr"] 
+    },
+    "tara":{
+        "cc": ["bbr"] 
+    },
+    "maguro":{
+        "cc": ["bbr"] 
+    },
+    "unagi":{
+        "cc": ["bbr"] 
+    },
+    "bola_causalsim":{
+        "cc": ["bbr"] 
+    },
+    "causalsim_rl":{
+        "cc": ["bbr"] 
+    }
+}

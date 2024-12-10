@@ -1,0 +1,8 @@
+{
+    "fugu_variant_cl": {
+        "cc": ["bbr"] 
+    },
+    "fugu_variant_cl2": {
+        "cc": ["bbr"] 
+    }
+}

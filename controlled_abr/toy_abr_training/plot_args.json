@@ -1,0 +1,33 @@
+{   
+    "names": {
+        "balanced__random__-__-__balanced": "Random",
+        "balanced__pts_0.50__-__-__balanced": "Plume-Dynamic",
+        "balanced__input_based_pts__-__balanced": "Plume-Static"
+    },
+    "markers": {
+        "Random": "o",
+        "Random + PER": "s",
+        "Plume-Dynamic": "v",
+        "Plume-Dynamic + PER": "<",
+        "Trace Error Weighted": "<",
+        "Plume-Static": "d"
+
+    },
+    "palette":{
+        "Random": "#1b9e77",
+        "Random + PER": "#666666",
+        "Trace Error Weighted": "#7570b3",
+        "Plume-Dynamic": "#D62728",
+        "Plume-Dynamic + PER": "#a6761d",
+        "Plume-Static": "#a6761d"
+    },
+    "dashes":{
+        "Random": [2, 1],
+        "Random + PER": [4, 1],
+        "Trace Error Weighted": [2,2],
+        "Plume-Dynamic + PER": [2,2],
+        "Plume-Dynamic": [1, 0],
+        "Plume-Static": [4, 1]
+    }
+
+}

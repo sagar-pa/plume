@@ -1,0 +1,12 @@
+{
+    "mean": null,
+    "quantile": [{"q": 0.025}, {"q": 0.05}, {"q": 0.95}],
+    "truncated_mean": [{"q": 0.05}, {"q": 0.125}, {"q": 0.25}],
+    "fft_aggregated": [{"aggtype": "centroid"}],
+
+    "ratio_beyond_r_sigma": [{"r": 1}, {"r": 2.5}],
+    "variation_coefficient": null,
+    "change_quantiles": [{"ql": 0.05, "qh": 0.95, "isabs": true, "f_agg": "mean"}, 
+                            {"ql": 0.0125, "qh": 0.9875, "isabs": true, "f_agg": "mean"}],
+    "autocorrelation": [{"lag": 3},{"lag": 4},{"lag": 8}]
+}
