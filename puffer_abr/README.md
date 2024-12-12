@@ -26,7 +26,7 @@ pip install 'ray[rllib]==1.13'
 ```
 
 ## Setting up traces
-From this point on, we assume that you are in the `training/` directory. You may change to it using `cd training/`
+From this point on, we assume that you are in the `puffer_abr_training/` directory. You may change to it using `cd puffer_abr_training/`
 
 In our experiments, we used the traces for the months of April and May 2021. To use the traces used in the paper, you can go to this [Google Drive folder](https://drive.google.com/drive/folders/1zLbD94Yd8BkLEnLHsSBLOFPEpoMD5DiN?usp=sharing), download the traces, and unzip it to a destination traces folder. 
 ```bash
