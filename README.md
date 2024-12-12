@@ -26,4 +26,11 @@ keywords = {deep reinforcement learning, video streaming}
 
 The code is split into two directories: `controlled_abr` and `puffer_abr`. `controlled_abr` corresponds to the controlled Trace-Bench environment in the paper (where the traces are generated in a controlled manner), while `puffer_abr` is the simulation environment that uses the logs produced by [Puffer](https://puffer.stanford.edu), a free and open-source live TV streaming website and a research study at Stanford University. This is the environment that implements Gelato. 
 
-For more details and usage, please clone the repo and see the `README.md` of those directories. We will also add more documentation and add a few more functionality in the future. Stay tuned!
+For more details and usage, please clone the repo and see the `README.md` of those directories.
+
+## To Do 
+
+We will add more documentation and add more functionality in the future.
+- [ ] Add function to integrate given throughput traces
+- [ ] Add documentation for evaluating classical policies
+- [ ] Add documentation for plotting functions given

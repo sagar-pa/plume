@@ -34,7 +34,9 @@ unzip 4.zip -d ./traces
 unzip 5.zip -d ./traces
 ```
 
-Alternatively, you may download a new set of traces and extracting the features using the `setup_env.py` file. You can run `python setup_env.py --days [NUM OF DAYS OF TRACE TO DOWNLOAD] --start_date [YYYY/MM/DD] --trace_folder [Path to folder]`. It will start at the start_date, and go **backwards** till number of days are reached. This script is slow and expensive and should be avoided unless necessary. 
+Alternatively, you may download a new set of traces and extracting the features using the `setup_env.py` file. You can run `python setup_env.py --days [NUM OF DAYS OF TRACE TO DOWNLOAD] --start_date [YYYY/MM/DD] --trace_dir ./traces`. It will start at the start_date, and go **backwards** till number of days are reached. This logic follows the results plots shown: starting from 2020/05/01 and requesting 14 days will produce the data for the 14 day plot found on the [results page](https://puffer.stanford.edu/results/) for that day. However, note that this script is *slow and expensive* and should be avoided unless necessary.
+
+If you use any other directory, please appropriately change the value in `global_constants.py`
 
 
 ## Training

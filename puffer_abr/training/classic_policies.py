@@ -96,6 +96,8 @@ class LinearBBA:
             action = next_ssims[mask].argmax()
         return action
 
+# Bola and MPC code taken from 
+# https://github.com/CausalSim/Unbiased-Trace-Driven-Simulation/tree/master/abr-synthetic
 class BolaBasic:
     SIZE_LADDER = [44319, 93355, 115601, 
                          142904, 196884, 263965,

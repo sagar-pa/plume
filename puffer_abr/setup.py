@@ -20,6 +20,7 @@ setup(
         "tsfresh", # For smart weighting
         "scikit-learn", 
         "stable-baselines3>=2.0",
+        "cython"
     ],
     description="A simulation gym training environment for Adaptive Bitrate using Puffer's public data.",
     author="Sagar Patel",
