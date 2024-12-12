@@ -13,10 +13,8 @@ from tqdm.auto import tqdm
 from ray.tune.registry import register_env
 import numpy as np
 from global_constants import (
-    NUM_ENVS,
-    N_STEPS,
-    LOG_DIR,
-    SAMPLING_LOG_DIR
+    NUM_ENVS, N_STEPS, LOG_DIR, SAMPLING_LOG_DIR, GAMMA, N_STEP_RETURN,
+    LEARNING_RATE, CHECKPOINT_FREQS, STEPS_PER_ITER, SEEDS, NUM_DATASETS, N_EVAL_EPS
 )
 from ray.tune.logger import Logger
 import shutil
@@ -34,14 +32,6 @@ def null_logger_creator(config):
     return NullLogger(config, Path("."))
 
 
-GAMMA = 0.975
-N_STEP_RETURN = 7
-LEARNING_RATE = 7.5e-6 #adjust
-CHECKPOINT_FREQS = list(range(5, 101, 5))
-STEPS_PER_ITER = 20000
-SEEDS = [13, 103, 223, 347, 463, 607, 743, 883, 919, 937]
-NUM_DATASETS = 3
-N_EVAL_EPS = (1000 * NUM_DATASETS) + (5 * NUM_DATASETS *  NUM_ENVS) # extra episodes for overlap
 
 def print_metrics(metrics: dict, kind: str = "training", is_eval: bool = False) -> None:
     """

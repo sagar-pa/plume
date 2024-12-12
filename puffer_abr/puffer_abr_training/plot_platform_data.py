@@ -15,7 +15,7 @@ import numpy as np
 from statsmodels.stats.weightstats import DescrStatsW
 from argparse import ArgumentParser
 import json
-from gymnaisum.utils.seeding import np_random
+from gymnasium.utils.seeding import np_random
 from scipy.stats import bootstrap
 
 BOOTSTRAP_SEED = 19

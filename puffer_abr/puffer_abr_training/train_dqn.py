@@ -14,7 +14,7 @@ from abr_gym.utils import Cache, terminate_shared_data, SharedTestingData
 from abr_gym.abr_wrapper import ABRWrapper
 from ray.rllib.models import ModelCatalog
 from ray.rllib.models.torch.torch_modelv2 import TorchModelV2
-from training.plot import make_puffer_metrics
+from puffer_abr_training.plot import make_puffer_metrics
 import pickle as pk
 from abr_gym.trace_loader import load_traces
 

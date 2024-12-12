@@ -11,8 +11,8 @@ from abr_gym.pensieve_wrapper import PensieveWrapper
 from abr_gym.trace_loader import load_traces
 import pickle as pk
 from abr_gym.utils import SharedTestingData, terminate_shared_data
-from training.plot import make_puffer_metrics
-from global_constants import (
+from puffer_abr_training.plot import make_puffer_metrics
+from puffer_abr_training.global_constants import (
     TEST_ENV_KWARGS, TRACE_DIR, TEST_SPLIT, N_TEST_TRACES, MAX_TRACE_LEN, N_ENVS, N_EVAL_EPS,
     LOG_DIR, SUMMARY_DIR, TEST_ABR_KWARGS
 )

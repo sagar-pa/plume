@@ -224,7 +224,7 @@ class PensieveWrapper(gym.Env):
                 max=self.max_video_size))
             self.quality_future.append(self.normalize(ssim_dbs[i],
                 max=self.max_quality))
-        self.use_n = not self._env._test and self._env.np_random.rand() < 0.5
+        self.use_n = not self._env._test and self._env.np_random.random() < 0.5
         return self.observe(), info
 
     def close(self) -> None:

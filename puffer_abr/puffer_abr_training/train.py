@@ -8,10 +8,10 @@ from argparse import ArgumentParser
 from typing import Tuple
 from copy import deepcopy
 
-from training.network_heads import (SmallCNN, PensieveExtractorOriginal)
-from training.train_utils import AnnealingCallBack, CustomCheckpointCallback
-from training.test_controller import test_rl
-from global_constants import (
+from puffer_abr_training.network_heads import (SmallCNN, PensieveExtractorOriginal)
+from puffer_abr_training.train_utils import AnnealingCallBack, CustomCheckpointCallback
+from puffer_abr_training.test_controller import test_rl
+from puffer_abr_training.global_constants import (
     ENV_KWARGS, TRACE_DIR, TRAIN_LOG_DIR, MAX_TRACE_K, MAX_CACHE_SIZE,
     TRAIN_STEPS, SEEDS, SAVE_FREQS, TEST_FREQS, N_ENVS, ABR_KWARGS
 )
@@ -80,7 +80,7 @@ def run_gelato(seed: int,
         env_kwargs=ENV_KWARGS, vec_env_cls=SubprocVecEnv, 
         vec_env_kwargs=dict(start_method="forkserver"))
 
-    policy_kwargs = dict(net_arch=[dict(pi=[256], vf=[256])],
+    policy_kwargs = dict(net_arch=dict(pi=[256], vf=[256]),
                             activation_fn=nn.ReLU,
                             features_extractor_class=SmallCNN )
     ent_callback = AnnealingCallBack("ent_coef", start=5.75, end=.00025, 
@@ -164,7 +164,7 @@ def run_pensieve(seed: int,
     checkpoint_callback = CustomCheckpointCallback(save_freqs=save_freqs, 
         save_dir=checkpoint_dir, 
         model_name=model_name, total_train_steps=TRAIN_STEPS, n_train_envs=N_ENVS)
-    policy_kwargs = dict(net_arch=[dict(pi=[128], vf=[128])],
+    policy_kwargs = dict(net_arch=dict(pi=[128], vf=[128]),
                             activation_fn=nn.ReLU,
                             features_extractor_class=PensieveExtractorOriginal)
     model =  A2C("CnnPolicy", env=train_env, n_steps=15, gamma=0.95, 
@@ -187,7 +187,7 @@ def run_pensieve(seed: int,
 
 def main(args):
     test_args = []
-    idx = args.start_idx
+    idx = args.idx
     seed = SEEDS[idx]
     if args.kind == "pensieve": 
         model_name, checkpont_dir, env_kwargs = run_pensieve(seed, args.sampling_func, idx, 
