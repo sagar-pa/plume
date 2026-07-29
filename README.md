@@ -1,9 +1,43 @@
 # Plume
-This is the public repository of the code part of the paper [*Practically High-Performant Neural Adaptive Video Streaming*](https://dl.acm.org/doi/10.1145/3696401), the **Best Paper award** winner at ACM CoNext 2024. 
+**Plume is the training framework behind Gelato, the state-of-the-art adaptive bitrate (ABR) controller on [Puffer](https://puffer.stanford.edu) ([GitHub](https://github.com/StanfordSNR/puffer)).** Puffer is Stanford's free, open-source live TV streaming platform and a real-world research testbed for improving video streaming, evaluating ABR controllers in the real world by streaming to 350,000+ users across the wide area Internet.
 
-This is a clean implementation of the adaptive bitrate reinforcement learning environment in [Open AI's Gym](https://github.com/openai/gym). The code is partly based off of the code in [Park Project](https://github.com/park-project/park/tree/master/park/envs/abr_sim), [Pensieve](https://github.com/hongzimao/pensieve) and [Puffer](https://github.com/StanfordSNR/puffer). 
+Trained with Plume and evaluated on Puffer for more than a year, Gelato still outperforms all evaluated ML controllers, nearly 4 years afterwards. It was the first controller on the platform to deliver statistically significant improvements in both video quality and stalling, reducing stalls by as much as 75%. The work is described in [*Practically High-Performant Neural Adaptive Video Streaming*](https://dl.acm.org/doi/10.1145/3696401), winner of the **Best Paper Award at ACM CoNEXT 2024**.
 
-If you are using any of this code (or any of the [deployment code](https://github.com/sagar-pa/abr_rl_test)) as part of a research project, we ask that you please cite the original paper:
+## Plume and Gelato
+
+Network-trace datasets are highly skewed: common network conditions dominate training, while difficult but important conditions are underrepresented. Plume is a general training framework that addresses this problem in three stages:
+
+1. Identify the trace features that most strongly affect a controller's behavior.
+2. Cluster traces using those features.
+3. Prioritize salient clusters during training so the controller learns from a more useful balance of network conditions.
+
+Gelato is the neural ABR controller trained with this framework. It uses playback and network observations to select the quality of each upcoming video chunk, balancing video quality against the risk of rebuffering. Plume's contribution is not a Puffer-specific heuristic: it is a systematic way to build better training distributions for learning-based controllers, with Gelato demonstrating the approach at scale on Puffer.
+
+## Repository layout
+
+This repository provides [Gymnasium](https://github.com/Farama-Foundation/Gymnasium) environments and training code for reproducing the controlled and Puffer-based experiments from the paper. Parts of the implementation build on the [Park project](https://github.com/park-project/park/tree/master/park/envs/abr_sim), [Pensieve](https://github.com/hongzimao/pensieve), and [Puffer](https://github.com/StanfordSNR/puffer).
+
+- [`controlled_abr`](controlled_abr) contains Trace-Bench, the controlled environment used for repeatable experiments over synthetically generated trace distributions.
+- [`puffer_abr`](puffer_abr) contains the trace-driven simulation environment built from Puffer's public logs, along with the code used to train and evaluate Gelato.
+
+Each directory has its own README with installation, data preparation, and training instructions.
+
+## Train and test on Puffer
+
+Use [`puffer_abr`](puffer_abr) to download or load Puffer traces, train Gelato with Plume's sampling strategies, and evaluate controllers in simulation.
+
+For the models used by Gelato and the adapter that connects Python ABR controllers to a Puffer deployment, see [`sagar-pa/abr_rl_test`](https://github.com/sagar-pa/abr_rl_test). That repository also provides the interface for adding another controller and testing it against Puffer.
+
+Useful Puffer links:
+
+- [Puffer live website](https://puffer.stanford.edu)
+- [Puffer source code](https://github.com/StanfordSNR/puffer)
+- [Gelato models and Puffer testing adapter](https://github.com/sagar-pa/abr_rl_test)
+
+## Citation
+
+If you use this code, the Gelato models, or the Puffer adapter as part of a research project, please cite the original paper:
+
 ```BibTeX
 @article{plume2024,
 author = {Patel, Sagar and Zhang, Junyang and Narodystka, Nina and Jyothi, Sangeetha Abdu},
@@ -23,14 +57,3 @@ numpages = {23},
 keywords = {deep reinforcement learning, video streaming}
 }
 ```
-
-The code is split into two directories: `controlled_abr` and `puffer_abr`. `controlled_abr` corresponds to the controlled Trace-Bench environment in the paper (where the traces are generated in a controlled manner), while `puffer_abr` is the simulation environment that uses the logs produced by [Puffer](https://puffer.stanford.edu), a free and open-source live TV streaming website and a research study at Stanford University. This is the environment that implements Gelato. 
-
-For more details and usage, please clone the repo and see the `README.md` of those directories.
-
-## To Do 
-
-We will add more documentation and add more functionality in the future.
-- [ ] Add function to integrate given throughput traces
-- [ ] Add documentation for evaluating classical policies
-- [ ] Add documentation for plotting functions given
